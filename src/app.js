@@ -1,4 +1,6 @@
 require('./styles/main.styl');
+require('jquery');
+require('./lib/bootstrap.min.js');
 
 const App = require('ampersand-app');
 const Router = require('./router');

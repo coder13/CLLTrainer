@@ -1,13 +1,15 @@
 var app = require('ampersand-app');
 var Router = require('ampersand-router');
 var ReactDOM = require('react-dom');
-var Layout = require('./pages/layout.js');
-var IndexPage = require('./pages/index.js');
+var Layout = require('./pages/layout');
+var IndexPage = require('./pages/index');
+var LearnPage = require('./pages/learn');
+var DrillPage = require('./pages/drill');
 
 module.exports = Router.extend({
-	renderPage (page, opts) {
+	renderPage (page, active) {
 		page = (
-			<Layout>
+			<Layout active={active}>
 				{page}
 			</Layout>
 		);
@@ -17,19 +19,24 @@ module.exports = Router.extend({
 
 	routes: {
 		'': 'index',
-		'learn': 'competition',
-		'drill': 'export'
+		'learn/:case': 'learn',
+		'drill': 'drill',
+		'*404': 'redirect'
 	},
 
 	index () {
-		this.renderPage(<IndexPage/>, document.body);
+		this.renderPage(<IndexPage/>, 'home');
 	},
 
-	learn () {
-		// this.renderPage(<LearnPage/>, document.body);
+	learn (oll) {
+		this.renderPage(<LearnPage oll={oll}/>, 'learn');
 	},
 
 	drill () {
-		// this.renderPage(<DrillPage/>, document.body);
+		this.renderPage(<DrillPage/>, 'drill');
+	},
+
+	redirect () {
+		this.redirectTo('/')
 	}
 });

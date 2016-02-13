@@ -1,13 +1,26 @@
 var React = require('react');
 
-const lineColor = 'grey';
+const Black  = '#000000';
+const Dgrey  = '#404040';
+const Grey   = '#808080';
+const Silver = '#BFBFBF';
+const White  = '#FFFFFF';
+const Yellow = '#FEFE00';
+const Red    = '#EE0000'; //'FE0000';
+const Orange = '#FFA100'; //'FE8600';
+const Blue   = '#0000F2';
+const Green  = '#00D800'; //'00F300';
+const Purple = '#A83DD9';
+const Pink   = '#F33D7B';
+
+const lineColor = Black;
 const CS = { // color scheme
-	top: 'yellow',
-	bottom: 'white',
-	front: 'blue',
-	back: 'green',
-	left: 'orange',
-	right: 'red'
+	top: Yellow,
+	bottom: White,
+	front: Blue,
+	back: Green,
+	left: Orange,
+	right: Red
 };
 
 module.exports = React.createClass({
@@ -125,28 +138,28 @@ module.exports = React.createClass({
 				<rect x='1' y='0' width={2} height={1} style={{fill: corners[0][1], stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='1' y='1' width={2} height={2} style={{fill: corners[0][2], stroke: lineColor, strokeWidth: lw}}/>
 
-				<rect x='0' y='3' width={1} height={2} style={{fill: 'grey', stroke: lineColor, strokeWidth: lw}}/>
+				<rect x='0' y='3' width={1} height={2} style={{fill: Grey, stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='1' y='3' width={2} height={2} style={{fill: CS.top, stroke: lineColor, strokeWidth: lw}}/>
 
 				<rect x='5' y='0' width={2} height={1} style={{fill: corners[1][0], stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='7' y='1' width={1} height={2} style={{fill: corners[1][1], stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='5' y='1' width={2} height={2} style={{fill: corners[1][2], stroke: lineColor, strokeWidth: lw}}/>
 
-				<rect x='3' y='0' width={2} height={1} style={{fill: 'grey', stroke: lineColor, strokeWidth: lw}}/>
+				<rect x='3' y='0' width={2} height={1} style={{fill: Grey, stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='3' y='1' width={2} height={2} style={{fill: CS.top, stroke: lineColor, strokeWidth: lw}}/>
 
 				<rect x='7' y='5' width={1} height={2} style={{fill: corners[2][0], stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='5' y='7' width={2} height={1} style={{fill: corners[2][1], stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='5' y='5' width={2} height={2} style={{fill: corners[2][2], stroke: lineColor, strokeWidth: lw}}/>
 
-				<rect x='7' y='3' width={1} height={2} style={{fill: 'grey', stroke: lineColor, strokeWidth: lw}}/>
+				<rect x='7' y='3' width={1} height={2} style={{fill: Grey, stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='5' y='3' width={2} height={2} style={{fill: CS.top, stroke: lineColor, strokeWidth: lw}}/>
 
 				<rect x='1' y='7' width={2} height={1} style={{fill: corners[3][0], stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='0' y='5' width={1} height={2} style={{fill: corners[3][1], stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='1' y='5' width={2} height={2} style={{fill: corners[3][2], stroke: lineColor, strokeWidth: lw}}/>
 
-				<rect x='3' y='7' width={2} height={1} style={{fill: 'grey', stroke: lineColor, strokeWidth: lw}}/>
+				<rect x='3' y='7' width={2} height={1} style={{fill: Grey, stroke: lineColor, strokeWidth: lw}}/>
 				<rect x='3' y='5' width={2} height={2} style={{fill: CS.top, stroke: lineColor, strokeWidth: lw}}/>
 
 				<rect x='3' y='3' width={2} height={2} style={{fill: CS.top, stroke: lineColor, strokeWidth: lw}}/>

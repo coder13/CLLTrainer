@@ -36,8 +36,8 @@ module.exports = React.createClass({
 
 	getInitialState () {
 		return {
-			filterCaseType: [],
-			filterAlgType: []
+			filterCaseType: app.me.filterCaseType,
+			filterAlgType: app.me.filterAlgType
 		};
 	},
 
@@ -46,10 +46,14 @@ module.exports = React.createClass({
 	},
 
 	filter () {
-		this.setState({
-			filterCaseType: this.refs.filterCaseType.getCheckedValues(),
-			filterAlgType:  this.refs.filterAlgType.getCheckedValues()
-		});
+		this.state.filterCaseType = this.refs.filterCaseType.getCheckedValues();
+		this.state.filterAlgType = this.refs.filterAlgType.getCheckedValues();
+		app.me.filterCaseType = this.state.filterCaseType;
+		app.me.filterAlgType = this.state.filterAlgType;
+		console.log(app.me.filterCaseType, app.me.filterAlgType);
+		app.me.save();
+
+		this.forceUpdate();
 	},
 
 	render () {
@@ -87,7 +91,7 @@ module.exports = React.createClass({
 								<div className='panel panel-default' style={{margin: '0px'}}>
 									<div className='panel-heading'>Case Types</div>
 									<div className='panel-body checkbox'>
-										<CheckboxGroup name='case_type' ref='filterCaseType' onChange={this.filter}>
+										<CheckboxGroup name='case_type' ref='filterCaseType' value={this.state.filterCaseType} onChange={this.filter}>
 											<label><input type='checkbox' value='CLL'/>CLL</label><br/>
 											<label><input type='checkbox' value='CMLL'/>CMLL</label><br/>
 											<label><input type='checkbox' value='COLL'/>COLL</label><br/>
@@ -97,7 +101,7 @@ module.exports = React.createClass({
 								<div className='panel panel-default' style={{margin: '0px'}}>
 									<div className='panel-heading'>Alg type</div>
 									<div className='panel-body checkbox'>
-										<CheckboxGroup name='case_type' ref='filterAlgType' onChange={this.filter}>
+										<CheckboxGroup name='case_type' ref='filterAlgType' value={this.state.filterAlgType}  onChange={this.filter}>
 											<label><input type='checkbox' value='RUD'/>RUD</label><br/>
 											<label><input type='checkbox' value='RUF'/>RUF</label><br/>
 											<label><input type='checkbox' value='RUL'/>RUL</label><br/>
@@ -118,14 +122,14 @@ module.exports = React.createClass({
 								</tr>
 							</thead>
 							<tbody>
-								{_.keys(cases).map((i,index) => (
+								{cases.map((_case,index) => (
 								<tr key={index}>
 									<td>{index+1}</td>
-									<td><Cube puzzle={3} oll={oll} perm={i} size={size}/></td>
+									<td><Cube puzzle={3} oll={oll} perm={_case.perm} size={size}/></td>
 									<td>
-									{DB.subsets[this.props.oll].cases[i].algs.filter(algFilter).map((alg, index) => (
+									{_case.algs ? _case.algs.filter(algFilter).map((alg, index) => (
 										<Alg key={index} alg={alg.alg} auf={alg.auf} type={alg.type}/>
-									))}
+									)) : ''}
 									</td>
 									<td></td>
 								</tr>))}

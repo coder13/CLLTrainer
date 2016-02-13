@@ -16,8 +16,8 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 	subsets: {
 		T: {
 			oll: [1, 0, 0, -1],
-			cases: {
-				0: {
+			cases: [{
+					perm: 0,
 					comment: 'pure 2gen case',
 					algs: [{
 						type: '*',
@@ -39,7 +39,8 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						auf: 'U',
 						alg: "R U' R U' R U R' U R' U R'"
 					}]
-				}, 1: {
+				}, {
+					perm: 1,
 					algs: [{
 						type: '*',
 						moveSet: 'RUF',
@@ -50,12 +51,18 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						moveSet: 'RUF',
 						alg: "F R F' r U R' U' r'"
 					}, {
+						type: '*',
+						moveSet: 'RUD',
+						auf: 'U\'',
+						alg: "x' R U R' D R U' R' D'"
+					}, {
 						type: ['CLL', 'CMLL'],
 						moveSet: 'RUL',
 						auf: 'U\'',
 						alg: "R' U' R U L U' R' U x"
 					}]
-				}, 2: {
+				}, {
+					perm: 2,
 					algs: [{
 						type: ['CLL', 'CMLL'],
 						moveSet: 'RUF',
@@ -67,17 +74,19 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 					}, {
 						type: '*',
 						moveSet: 'RUD',
+						auf: 'U',
 						alg: "R U R D R' U' R D' R2"
 					}, {
 						type: '*',
 						moveSet: 'RUD',
 						alg: "R U R' U' L' U R U' R' L"
 					}]
-				}, 3: {
+				}, {
+					perm: 3,
 					algs: [{
 						type: '*',
 						moveSet: 'RUF',
-						auf: 'U',
+						auf: 'U\'',
 						alg: "F R U R' U' R U' R' U' R U R' F'"
 					}, {
 						type: ['CLL', 'CMLL'],
@@ -99,7 +108,8 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						auf: 'U2',
 						alg: "R' D R U' R U R' U R' D' R"
 					}]
-				}, 4: {
+				}, {
+					perm: 4,
 					algs: [{
 						type: 'CLL',
 						moveSet: 'RUF',
@@ -126,7 +136,8 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						auf: 'U',
 						alg: "R' U r U2 R2' F R F' r"
 					}]
-				}, 5: {
+				}, {
+					perm: 5,
 					comment: 'diagonal swap case',
 					algs: [{
 						type: '*',
@@ -145,31 +156,216 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						alg: "F U' R U2 R' U' F2 R U R'"
 					}]
 				}
-			}
+			]
 		}, 
 		U: {
 			oll: [-1, 0, 0, 1],
-			cases: [0, 1, 2, 3, 4, 5]
+			cases: [{
+				perm: 0,
+				algs: [{
+					type: '*',
+					moveSet: 'RU',
+					auf: 'U',
+					alg: "R' U' R U' R' U2 R2 U R' U R U2 R'"
+				}, {
+					type: 'CLL',
+					moveSet: 'RU',
+					auf: 'U2',
+					alg: "R U' R U' R U' R' U R' U R'"
+				}, {
+					type: '*',
+					moveSet: 'RU',
+					alg: "R U R' U' R U' R' U2 R U' R' U2 R U R'"
+				}, {
+					type: '*',
+					moveSet: 'RU',
+					alg: "R' U' R U' R' U2 R2 U R' U R U2 R'"
+				}]
+			}, {
+				perm: 1,
+				algs: [{
+					type: '*',
+					moveSet: 'RUD',
+					auf: 'U\'',
+					alg: "R2 D R' U2 R D' R' U2 R'"
+				}, {
+					type: '*',
+					moveSet: 'RUD',
+					auf: 'U\'',
+					alg: "x' R U' R' D R U2 R' D' R U' R' x"
+				}, {
+					type: ['CLL', 'CMLL'],
+					moveSet: 'LUF',
+					auf: 'U',
+					alg: "L F' L' U' L F' L' U' F' U2 F"
+				}, {
+					type: 'CLL',
+					moveSet: 'RUL',
+					auf: 'U\'',
+					alg: "R2 U R' U' R2 U' y L' U2 L"
+				}, {
+					type: 'CLL',
+					moveSet: 'RUF',
+					auf: 'U',
+					alg: "R' U R' F R F' R U2 R' U R"
+				}]
+			}, {
+				perm: 2,
+				algs: [{
+					type: '*',
+					moveSet: 'RUD',
+					auf: 'U',
+					alg: "R2 D' R U2 R' D R U2 R"
+				}, {
+					type: 'CLL',
+					moveSet: 'RUF',
+					alg: 'U\'',
+					alg: "R U2 R' U R' F2 R F' R' F2 R"
+				}, {
+					type: 'CLL',
+					moveSet: 'RUF',
+					alg: "U",
+					alg: "R' U R' F R F' R U2 R' U R"
+				}]
+			}, {
+				perm: 3,
+				algs: [{
+					type: '*',
+					moveSet: 'RUF',
+					auf: 'U',
+					alg: "F R U' R' U R U R' U R U' R' F'"
+				}, {
+					type: '*',
+					moveSet: 'RUF',
+					auf: 'U',
+					alg: "R' F2 R U2 R U2 R' F2 R U2 R'"
+				}, {
+					type: ['CLL', 'CMLL'],
+					moveSet: 'RUF',
+					auf: 'U',
+					alg: "R' F U' R F R' U R F'"
+				}]
+			}, {
+				perm: 4,
+				algs: [{
+					type: '*',
+					moveSet: 'RUF',
+					auf: 'U',
+					alg: "R' F R U' R' U' R U R' F' R U R' U' R' F R F' R"
+				}, {
+					type: '*',
+					moveSet: 'RUF',
+					auf: 'U',
+					alg: "R' U' R F R2 D' R U R' D R2 U' F'"
+				}, {
+					type: ['CLL', 'CMLL'],
+					moveSet: 'RUF',
+					alg: "F R2 D R' U R D' R2' U' F'"
+				}, {
+					type: 'CLL',
+					moveSet: 'RU',
+					alg: "z' U2 R' U' R2 U' R' U' R U' R' U' x2"
+				}]
+			}, {
+				perm: 5,
+				algs: [{
+					type: '*',
+					moveSet: "RUF",
+					auf: 'U',
+					alg: "R' U2 R F U' R' U' R U F'"
+				}, {
+					type: 'CLL',
+					moveSet: 'RUF',
+					alg: "F R U R' U' F'"
+				}, {
+					type: '*',
+					moveSet: 'RUD',
+					auf: 'U',
+					alg: "R2 D' R U R' D R U R U' R' U' R"
+				}, {
+					type: '*',
+					moveSet: 'RUD',
+					auf: 'U',
+					alg: "R U' R' U' R U R D R' U R D' R2"
+				}]
+			}]
 		}, 
 		H: {
 			oll: [1, -1, 1, -1],
-			cases: [0, 1, 3, 5]
+			cases: [{
+				perm: 0,
+				algs: [{
+					type: '*',
+					moveSet: 'RU',
+					alg: "R U2 R' U' R U R' U' R U' R'"
+				}, {
+					type: 'CLL',
+					moveSet: 'RU',
+					auf: 'U',
+					alg: "R2 U2 R U2' R2'"
+				}, {
+
+				}]
+			}, {
+				perm: 1,
+				algs: [{
+					type: '*',
+					moveSet: 'RUL',
+					auf: 'U',
+					alg: "R U R' U R U L' U R' U' L"
+				}, {
+					type: 'CLL',
+					moveSet: "RUF",
+					auf: 'U',
+					alg: "R U R' U R U R' F R' F' R"
+				}, {
+					type: ['CLL', 'CMLL'],
+					moveSet: "RUF",
+					auf: 'U',
+					alg: "R U2 R2 F R F' U2 R' F R F'"
+				}]
+			}, {
+				perm: 4,
+				algs: [{
+					type: '*',
+					moveSet: 'RUF',
+					auf: 'U',
+					alg: "F R U' R' U R U2 R' U' R U R' U' F'"
+				}]
+			}, {
+				perm: 5,
+				algs: [{
+					type: '*',
+					moveSet: 'RUF',
+					alg: "F R U R' U' R U R' U' R U R' U' F'"
+				}, {
+					type: '*',
+					moveSet: 'RUF',
+					alg: "F2 R' F2 R2 U2 R' F2"
+				}]
+			}]
 		}, 
 		Pi: {
 			oll: [-1, -1, 1, 1],
-			cases: [0, 1, 2, 3, 4, 5]
+			cases: []
 		}, 
 		L: {
 			oll: [-1, 0, 1, 0],
-			cases: [0, 1, 2, 3, 4, 5]
+			cases: [{
+
+			}]
 		}, 
 		S: {
 			oll: [1, 1, 1, 0],
-			cases: [0, 1, 2, 3, 4, 5]
+			cases: [{
+
+			}]
 		},
 		AS: {
 			oll: [-1, -1, -1, 0],
-			cases: [0, 1, 2, 3, 4, 5]
+			cases: [{
+
+			}]
 		}
 	}
 };

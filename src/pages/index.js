@@ -35,8 +35,9 @@ module.exports = React.createClass({
 
 	render () {
 		let puzzle = 3;
-		let size = window.innerWidth / 13;
-		size = size < 60 ? 60 : size;
+		// let size = window.innerWidth / 13;
+		// size = size < 60 ? 60 : size;
+		let size = 80;
 		let colStyle = {minWidth: '10%', width: '10%'};
 
 		return (

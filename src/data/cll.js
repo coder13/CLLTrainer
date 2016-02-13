@@ -18,13 +18,14 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 			oll: [1, 0, 0, -1],
 			cases: {
 				0: {
+					comment: 'pure 2gen case',
 					algs: [{
 						type: '*',
 						moveSet: 'RU',
 						auf: 'U',
 						alg: "R U2' R' U' R U' R2 U2' R U R' U R"
 					}, {
-						type: ['CLL'],
+						type: 'CLL',
 						moveSet: 'RUF',
 						auf: 'U',
 						alg: "R' U R' F U' R U F2 R2"
@@ -33,7 +34,7 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						moveSet: 'RUL',
 						alg: "R U R' U R U2 R' L' U' L U' L' U2 L"
 					}, {
-						type: ['CLL'],
+						type: 'CLL',
 						moveSet: 'RU',
 						auf: 'U',
 						alg: "R U' R U' R U R' U R' U R'"
@@ -100,7 +101,7 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 					}]
 				}, 4: {
 					algs: [{
-						type: ['CLL'],
+						type: 'CLL',
 						moveSet: 'RUF',
 						auf: 'U',
 						alg: "R' U R U2 R2' F R F' R"
@@ -126,6 +127,7 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						alg: "R' U r U2 R2' F R F' r"
 					}]
 				}, 5: {
+					comment: 'diagonal swap case',
 					algs: [{
 						type: '*',
 						moveSet: 'RUD',

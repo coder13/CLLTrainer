@@ -1,4 +1,5 @@
 const React = require('react');
+const Markdown = require('react-markdown');
 const Cube = require('../components/cube');
 const DB = require('../data/cll.js');
 
@@ -43,7 +44,7 @@ module.exports = React.createClass({
 				<div className='row'>
 					<div className='panel panel-primary'>
 						<div className='panel-heading' style={{paddingLeft: '50px'}}>Explanation</div>
-						<div className='panel-body' style={{paddingLeft: '50px'}}>{DB.explanation}</div>
+						<div className='panel-body' style={{paddingLeft: '50px'}}><Markdown source={DB.explanation}/></div>
 					</div>
 				</div>
 				<div className='container' style={{paddingLeft: '5px'}}>

@@ -64,20 +64,11 @@ module.exports = React.createClass({
 		let filterCaseType = this.state.filterCaseType;
 		let filterAlgType = this.state.filterAlgType;
 
-			console.log(filterCaseType,filterAlgType)
 		let algFilter = function (alg) {
 			let showAlgCauseCaseType = filterCaseType.length === 0 || (typeof alg.type === 'string' ? filterCaseType.indexOf(alg.type) !== -1 || alg.type === '*' : intersects(alg.type, filterCaseType).length !== 0);
-			console.log(alg.type, showAlgCauseCaseType);
 			let showAlgCauseAlgType = filterAlgType.length === 0 || (filterAlgType.indexOf(alg.moveSet) !== -1) || alg.moveSet === 'RU';
 
 			return (showAlgCauseCaseType && showAlgCauseAlgType);
-			// let asterik = filterAlgType.length === 0 || (alg.type.indexOf('*') !== -1);
-			// if (filterCaseType.length + filterAlgType.length === 0) {
-			// 	return true;
-			// } if (typeof alg.type === 'string') {
-			// 	return (filterCaseType.indexOf(alg.type) || asterik) && (filterAlgType.indexOf(alg.moveSet) !== -1 || filterAlgType.length === 0);
-			// }
-			// return (intersects(alg.type, filterCaseType).length !== 0 || asterik) && (filterAlgType.indexOf(alg.moveSet) !== -1 || filterAlgType.length === 0)
 		};
 
 		return (

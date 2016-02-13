@@ -1,10 +1,10 @@
-var app = require('ampersand-app');
-var Router = require('ampersand-router');
-var ReactDOM = require('react-dom');
-var Layout = require('./pages/layout');
-var IndexPage = require('./pages/index');
-var LearnPage = require('./pages/learn');
-var DrillPage = require('./pages/drill');
+const app = require('ampersand-app');
+const Router = require('ampersand-router');
+const ReactDOM = require('react-dom');
+const Layout = require('./pages/layout');
+const IndexPage = require('./pages/index');
+const LearnPage = require('./pages/learn');
+const DrillPage = require('./pages/drill');
 
 module.exports = Router.extend({
 	renderPage (page, active) {

@@ -1,8 +1,8 @@
-var _ = require('lodash');
-var React = require('react');
-var CheckboxGroup = require('react-checkbox-group')
-var Cube = require('../components/cube');
-var DB = require('../data/cll.js');
+const _ = require('lodash');
+const React = require('react');
+const CheckboxGroup = require('react-checkbox-group')
+const Cube = require('../components/cube');
+const DB = require('../data/cll.js');
 
 const intersects = (a,b) => a.filter(i => b.indexOf(i) !== -1)
 
@@ -56,6 +56,7 @@ module.exports = React.createClass({
 		let size = window.innerWidth / 13;
 		size = size < 80 ? 80 : size;
 
+		let recognition = DB.subsets[this.props.oll].recognition
 		let oll = DB.subsets[this.props.oll].oll;
 		let cases = DB.subsets[this.props.oll].cases;
 
@@ -69,14 +70,12 @@ module.exports = React.createClass({
 
 		return (
 			<div>
-				<div className='row'>
+				{recognition ? <div className='row'>
 					<div className='panel panel-primary'>
 						<div className='panel-heading' style={{paddingLeft: '50px'}}>Recognition</div>
-						<div className='panel-body' style={{paddingLeft: '50px'}}>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</div>
+						<div className='panel-body' style={{paddingLeft: '50px'}}>{recognition}</div>
 					</div>
-				</div>
+				</div> : ''}
 				<div className='row' style={{margin: '2px'}}>
 					<div className='col-sm-2'>
 						<div className='panel panel-default'>
@@ -109,9 +108,10 @@ module.exports = React.createClass({
 						<table className='table'>
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Case</th>
-									<th>Algs</th>
+									<th style={{width: '1em'}}>#</th>
+									<th style={{width: `${size}px`}}>Case</th>
+									<th style={{width: '400px'}}>Algs</th>
+									<th>Comment</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -124,6 +124,7 @@ module.exports = React.createClass({
 										<Alg key={index} alg={alg.alg} auf={alg.auf} type={alg.type}/>
 									))}
 									</td>
+									<td></td>
 								</tr>))}
 							</tbody>
 						</table>

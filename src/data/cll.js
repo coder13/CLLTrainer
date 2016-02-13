@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'cll',
 
-	explanation: `**Corners Last Layer** is a group of methods collectively known as **C*LL** or **CxLL** that solve the last layer corners in one algorithm. Each method has certain restrictions that apply, and each can affect other pieces in different ways. 
+	explanation: `**Corners of Last Layer** is a group of methods collectively known as **C\\*LL** or **CxLL** that solve the last layer corners in one algorithm. Each method has certain restrictions that apply, and each can affect other pieces in different ways. 
 
 - CMLL - allows movement of the M layer and allows destruction of the UL and UR edges.
 - COLL - preserves the last layer's edge orientation.
@@ -11,7 +11,7 @@ C*LL is useful for 2x2, which has no edges, and also for corners first methods, 
 
 There are 42 C*LL cases. 6 for most cases except for H that has only 4 and 2 plls.
 
-For each case, first AUF to the appropriate angle. Once you've done that, you'll look at certain stickers to see where the stickers are the same color, opposite colors, and adjacent colors. In general, you do not need to know the color scheme around the cube--just which colors are opposite each other. For the purposes of my diagrams, red and orange are on opposite faces and so are green and blue.`,
+For each case, first AUF to the appropriate angle. Once you've done that, you'll look at certain stickers to see where the stickers are the same color, opposite colors, and adjacent colors. In general, you do not need to know the color scheme around the cube--just which colors are opposite each other.`,
 
 	subsets: {
 		T: {
@@ -19,7 +19,7 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 			cases: {
 				0: {
 					algs: [{
-						type: ['*'],
+						type: '*',
 						moveSet: 'RU',
 						auf: 'U',
 						alg: "R U2' R' U' R U' R2 U2' R U R' U R"
@@ -29,7 +29,7 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						auf: 'U',
 						alg: "R' U R' F U' R U F2 R2"
 					}, {
-						type: ['*'],
+						type: '*',
 						moveSet: 'RUL',
 						alg: "R U R' U R U2 R' L' U' L U' L' U2 L"
 					}, {
@@ -39,15 +39,109 @@ For each case, first AUF to the appropriate angle. Once you've done that, you'll
 						alg: "R U' R U' R U R' U R' U R'"
 					}]
 				}, 1: {
-					algs: []
+					algs: [{
+						type: '*',
+						moveSet: 'RUF',
+						auf: 'U2',
+						alg: "R' F' r U R U' r' F"
+					}, {
+						type: '*',
+						moveSet: 'RUF',
+						alg: "F R F' r U R' U' r'"
+					}, {
+						type: ['CLL', 'CMLL'],
+						moveSet: 'RUL',
+						auf: 'U\'',
+						alg: "R' U' R U L U' R' U x"
+					}]
 				}, 2: {
-					algs: []
+					algs: [{
+						type: ['CLL', 'CMLL'],
+						moveSet: 'RUF',
+						alg: "R U R' U' R' F R F'"
+					}, {
+						type: '*',
+						moveSet: 'RUF',
+						alg: "r U R' U' r' F R F'"
+					}, {
+						type: '*',
+						moveSet: 'RUD',
+						alg: "R U R D R' U' R D' R2"
+					}, {
+						type: '*',
+						moveSet: 'RUD',
+						alg: "R U R' U' L' U R U' R' L"
+					}]
 				}, 3: {
-					algs: []
+					algs: [{
+						type: '*',
+						moveSet: 'RUF',
+						auf: 'U',
+						alg: "F R U R' U' R U' R' U' R U R' F'"
+					}, {
+						type: ['CLL', 'CMLL'],
+						moveSet: 'RUF',
+						auf: 'U',
+						alg: "F R' U' R F' R' U F' R"
+					}, {
+						type: '*',
+						moveSet: 'RUF',
+						auf: 'U2',
+						alg: "R U2 R' F2 R U2 R' U2 R' F2 R"
+					}, {
+						type: ['COLL', 'CMLL'],
+						moveSet: 'RUD',
+						alg: "x' R U2 R D2 R' U2 R D2 R2 x"
+					}, {
+						type: ['CLL', 'CMLL'],
+						moveSet: 'RUD',
+						auf: 'U2',
+						alg: "R' D R U' R U R' U R' D' R"
+					}]
 				}, 4: {
-					algs: []
+					algs: [{
+						type: ['CLL'],
+						moveSet: 'RUF',
+						auf: 'U',
+						alg: "R' U R U2 R2' F R F' R"
+					}, {
+						type: '*',
+						moveSet: 'RUL',
+						auf: 'U',
+						alg: "R' U R U2' R' L' U R U' L"
+					}, {
+						type: '*',
+						moveSet: 'RUL',
+						auf: 'U\'',
+						alg: "R U' R' U2 L R U' R' U L'"
+					}, {
+						type: 'CLL',
+						moveSet: 'RUF',
+						auf: 'U',
+						alg: "R' U R U2 R2 F R F' R"
+					}, {
+						type: ['CLL', 'CMLL'],
+						moveSet: 'RUF',
+						auf: 'U',
+						alg: "R' U r U2 R2' F R F' r"
+					}]
 				}, 5: {
-					algs: []
+					algs: [{
+						type: '*',
+						moveSet: 'RUD',
+						auf: 'U',
+						alg: "R' U R2 D r' U2 r D' R2 U' R"
+					}, {
+						type: ['CLL', 'CMLL'],
+						moveSet: 'RUF',
+						auf: 'U',
+						alg: "R2' U' R F R' U R2 U' R' F' R"
+					}, {
+						type: 'CLL',
+						moveSet: 'RUF',
+						auf: 'U',
+						alg: "F U' R U2 R' U' F2 R U R'"
+					}]
 				}
 			}
 		}, 

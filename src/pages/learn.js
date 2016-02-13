@@ -7,16 +7,16 @@ const DB = require('../data/cll.js');
 const intersects = (a,b) => a.filter(i => b.indexOf(i) !== -1)
 
 const Types = {
-	'*': (<span className='label label-default'>*</span>),
-	'CLL': (<span className='label label-primary'>cll</span>),
-	'CMLL': (<span className='label label-success'>cmll</span>),
-	'COLL': (<span className='label label-info'>coll</span>),
+	'*': (<span style={{marginLeft: '.5em'}} className='label label-default'>*</span>),
+	'CLL': (<span style={{marginLeft: '.5em'}} className='label label-primary'>cll</span>),
+	'CMLL': (<span style={{marginLeft: '.5em'}} className='label label-success'>cmll</span>),
+	'COLL': (<span style={{marginLeft: '.5em'}} className='label label-info'>coll</span>),
 }
 
 const Alg = ({alg, auf, type}) => {
-	let aufSpan = auf ? (<span style={{color: 'grey'}}>[{auf}]</span>) : '';
-	let types = type ? type.map((type, i) => Types[type]) : '';
-	return (<code>{aufSpan} {alg} {types}<br/></code>);
+	let aufSpan = auf ? (<span style={{color: 'black'}}>[{auf}]</span>) : '';
+	let types = type ? (typeof type === 'string' ? Types[type] : type.map((t, i) => Types[t])) : '';
+	return (<code>{aufSpan} {alg}{types}<br/></code>);
 };
 
 module.exports = React.createClass({
@@ -63,10 +63,14 @@ module.exports = React.createClass({
 		let filterCaseType = this.state.filterCaseType;
 		let filterAlgType = this.state.filterAlgType;
 
-		let algFilter = (alg) => intersects(alg.type, filterCaseType).length === 0 && filterAlgType.indexOf(alg.moveSet) === -1;
-
-		console.log(63, this.state.filterAlgType);
-		console.log(DB.subsets[this.props.oll].cases[0].algs.filter(algFilter))
+		let algFilter = function (alg) {
+			if (filterCaseType.length + filterAlgType.length === 0) {
+				return true;
+			} if (typeof alg.type === 'string') {
+				return filterCaseType.indexOf(alg.type);
+			}
+			return (alg.type.indexOf('*') === -1 ? intersects(alg.type, filterCaseType).length !== 0 : true) || filterAlgType.indexOf(alg.moveSet) !== -1
+		};
 
 		return (
 			<div>
@@ -79,7 +83,7 @@ module.exports = React.createClass({
 				<div className='row' style={{margin: '2px'}}>
 					<div className='col-sm-2'>
 						<div className='panel panel-default'>
-							<div className='panel-heading'>Filter</div>
+							<div className='panel-heading'>Show Only:</div>
 							<div className='panel-body' style={{padding: '0px'}}>
 								<div className='panel panel-default' style={{margin: '0px'}}>
 									<div className='panel-heading'>Case Types</div>
@@ -117,7 +121,7 @@ module.exports = React.createClass({
 							<tbody>
 								{_.keys(cases).map((i,index) => (
 								<tr key={index}>
-									<td>{index}</td>
+									<td>{index+1}</td>
 									<td><Cube puzzle={3} oll={oll} perm={i} size={size}/></td>
 									<td>
 									{DB.subsets[this.props.oll].cases[i].algs.filter(algFilter).map((alg, index) => (
